@@ -8,33 +8,36 @@ else:
     print(f"Hello, {name}! Let's do some calculations.")
 
 running = True #sets the variable running to True to start the loop.
-while True: #identifying the loop for later.
+while running:
+    valid_operation = True #sets the variable valid_operation to True to start the loop in case division by zero is attempted.
+
     first_number = float(input("Enter the first number: "))
     operation = input("Enter an operation (+, -, *, /): ")
     second_number = float(input("Enter the second number: "))
 
     if operation == "+":
         result = first_number + second_number
-        print(f"{result}")
     elif operation == "-":
         result = first_number - second_number
-        print(f"{result}")
     elif operation == "*":
         result = first_number * second_number
-        print(f"{result}")
     elif operation == "/":
         if second_number != 0:
             result = first_number / second_number
-            print(f"{result}")
         else:
-            result = "Error: Division by zero is not allowed."
+            print("Error: Division by zero is not allowed.")
+            valid_operation = False 
     else:
-        result = "Error: Invalid operation."
+        print("Error: Invalid operation.")
+        valid_operation = False
+        
+    if valid_operation: #continues to print the result only if the operation was valid (not division by zero or invalid operation).
+        print(f"{result:g}")
 
-    exit_input = input("Exit or go again? (exit/go again): ")
+    exit_input = input("Exit or go again? (Exit/Go Again): ")
     if exit_input.lower() == "exit":
         print("Goodbye!")
         running = False
-        break #breaks the loop and ends the program due to the user inputting "exit".
-    elif exit_input.lower() == "go again":
-        running = True #continues the loop and allows the user to perform another calculation.
+        break
+
+
