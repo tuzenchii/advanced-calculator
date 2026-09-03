@@ -1,5 +1,6 @@
 print("Advanced Calculator 1.0 (Basic)")
-name = input("Let's begin. What is your name? ")
+name = input("Let's begin. What is your name? ").strip().title() #strips any whitespace and capitalizes the first letter of the name.( name = name.strip().title() )
+
 if name.lower() == "tre'von":
     print("Oh it's the creator! Let's work.")
 elif name.lower() == "kirsten":
@@ -10,7 +11,7 @@ else:
 running = True #sets the variable running to True to start the loop.
 while running:
     valid_operation = True #sets the variable valid_operation to True to start the loop in case division by zero is attempted.
-
+    
     first_number = float(input("Enter the first number: "))
     operation = input("Enter an operation (+, -, *, /): ")
     second_number = float(input("Enter the second number: "))
