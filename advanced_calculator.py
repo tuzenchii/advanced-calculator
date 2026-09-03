@@ -25,6 +25,7 @@ while True: #identifying the loop for later.
     elif operation == "/":
         if second_number != 0:
             result = first_number / second_number
+            print(f"{result}")
         else:
             result = "Error: Division by zero is not allowed."
     else:
