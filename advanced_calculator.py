@@ -49,5 +49,3 @@ while running:
         print(f"Goodbye! {first}!")
         running = False
         break
-
-
