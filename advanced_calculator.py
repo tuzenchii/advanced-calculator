@@ -1,12 +1,34 @@
 print("Advanced Calculator 1.0 (Basic)")
 
 def get_number(prompt):
+
     while True:
         try:
             return float(input(prompt))
         except ValueError:
             print("Error: Invalid input. Please enter a valid number.")
             continue
+def calculate(first_number, second_number, operation):
+    if operation == "+":
+        return first_number + second_number
+    elif operation == "-":
+        return first_number - second_number
+    elif operation == "*":
+        return first_number * second_number
+    elif operation == "/":
+        if second_number != 0:
+            return first_number / second_number
+        else:
+            print("Error: Division by zero is not allowed.")
+            return None
+    elif operation == "%":
+        if second_number != 0:
+            return first_number % second_number
+        else:
+            print("Error: Not allowed.")
+            return None
+    elif operation == "pow":
+        return first_number ** second_number
 def calculator1(): 
 
     running = True 
@@ -25,34 +47,14 @@ def calculator1():
                 continue
         second_number = get_number("Enter the second number: ")
 
-            
-        if operation == "+":
-            result = first_number + second_number
-        elif operation == "-":
-            result = first_number - second_number
-        elif operation == "*":
-            result = first_number * second_number
-        elif operation == "/":
-            if second_number != 0:
-                result = first_number / second_number
-            else:
-                print("Error: Division by zero is not allowed.")
-                valid_operation = False 
-        elif operation == "%":
-            if second_number != 0:
-                result = first_number % second_number
-            else:
-                print("Error: Not allowed.")
-                valid_operation = False 
-        elif operation == "pow":
-            result = first_number ** second_number
+        result = calculate(first_number, second_number, operation)
 
-        if valid_operation: #continues to print the result only if the operation was valid (not division by zero or invalid operation).
+        if result is not None: #continues to print the result only if the operation was valid (not division by zero or invalid operation).
             print(f"{result:,g}")
 
         exit_input = input("Exit or go again? (Exit/Go Again): ")
         if exit_input.lower() == "exit":
-            print(f"Goodbye! {first}!")
+            print(f"Goodbye, {first}!")
             running = False
             break
 
