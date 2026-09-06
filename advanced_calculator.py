@@ -12,10 +12,28 @@ else:
 running = True #sets the variable running to True to start the loop.
 while running:
     valid_operation = True #sets the variable valid_operation to True to start the loop in case division by zero is attempted.
-    
-    first_number = float(input("Enter the first number: "))
-    operation = input("Enter an operation (+, -, *, /, %, pow): ")
-    second_number = float(input("Enter the second number: "))
+    try:
+        first_number = float(input("Enter the first number: "))
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid number.")
+        continue
+    while True:
+        try:
+            operation = input("Enter an operation (+, -, *, /, %, pow): ")
+            if operation not in ["+", "-", "*", "/", "%", "pow"]:
+                raise ValueError("Invalid operation. Please enter a valid operation.")
+            break
+        except ValueError:
+            print("Error: Invalid operation. Please enter a valid operation.")
+            continue
+    while True:
+        try:
+            second_number = float(input("Enter the second number: "))
+            break
+        except ValueError:
+            print("Error: Invalid input. Please enter a valid number.")
+            continue
+        
 
     if operation == "+":
         result = first_number + second_number
@@ -37,9 +55,6 @@ while running:
             valid_operation = False 
     elif operation == "pow":
         result = first_number ** second_number
-    else:
-        print("Error: Invalid operation.")
-        valid_operation = False
         
     if valid_operation: #continues to print the result only if the operation was valid (not division by zero or invalid operation).
         print(f"{result:,g}")
