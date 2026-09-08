@@ -31,6 +31,7 @@ def calculate(first_number, second_number, operation):
         return first_number ** second_number
 def calculator1(): 
 
+
     running = True 
     while running:
 
@@ -57,6 +58,21 @@ def calculator1():
             print(f"Goodbye, {first}!")
             running = False
             break
+def equation():
+    running = True
+    while running:
+        equation = input("Please enter your equation (ex. 2+2*(3-1)): ")
+        try:
+            result = eval(equation)
+            print(f"{result:,g}")
+        except Exception as error:
+            print(f"Error. {error}")
+            
+        exit_input = input("Exit or go again? (Exit/Go Again): ")
+        if exit_input.lower() == "exit":
+            print(f"Goodbye, {first}!")
+            running = False
+            break
 
 start = input("Are you ready to start? (Yes/No): ")
 if start.lower() == "yes":
@@ -69,6 +85,12 @@ if start.lower() == "yes":
         print("Oh lala. The wife! Ready to begin? I doubt I know anything you don't.")
     else:
         print(f"Hello, {first}! Let's do some calculations.")
-    calculator1() #calls the calculator1 function to start the calculator program.
+    method = input("What would you like to do? (Calculator/Equation): ")
+    if method.lower() == "calculator":
+        calculator1() #calls the calculator1 function to start the calculator program.
+    elif method.lower() == "equation":
+        equation() #calls the equation function to start the equation evaluator.
+    else:
+        print("Invalid option.")
 else:
     print("Weirdo.")
