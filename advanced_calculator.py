@@ -35,7 +35,6 @@ def calculator1():
     running = True 
     while running:
 
-        valid_operation = True #sets the variable valid_operation to True to start the loop in case division by zero is attempted.
         first_number = get_number("Enter the first number: ")
         while True:
             try:
