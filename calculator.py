@@ -1,12 +1,11 @@
-print("Advanced Calculator 1.0 (Basic)")
+print("Calculator 1.0 (Basic)")
 
 def get_number(prompt):
-
     while True:
         try:
             return float(input(prompt))
         except ValueError:
-            print("Error: Invalid input. Please enter a valid number.")
+            print("Error: Invalid input.")
             continue
 def calculate(first_number, second_number, operation):
     if operation == "+":
@@ -30,20 +29,17 @@ def calculate(first_number, second_number, operation):
     elif operation == "pow":
         return first_number ** second_number
 def calculator1(): 
-
-
-    running = True 
-    while running:
+    while True:
 
         first_number = get_number("Enter the first number: ")
         while True:
             try:
                 operation = input("Enter an operation (+, -, *, /, %, pow): ")
                 if operation not in ["+", "-", "*", "/", "%", "pow"]:
-                    raise ValueError("Invalid operation. Please enter a valid operation.")
+                    raise ValueError("Invalid operation.")
                 break
             except ValueError:
-                print("Error: Invalid operation. Please enter a valid operation.")
+                print("Error: Invalid operation.")
                 continue
         second_number = get_number("Enter the second number: ")
 
@@ -54,12 +50,9 @@ def calculator1():
 
         exit_input = input("Exit or go again? (Exit/Go Again): ")
         if exit_input.lower() == "exit":
-            print(f"Goodbye, {first}!")
-            running = False
-            break
+            return print(f"Goodbye, {first}!")
 def equation():
-    running = True
-    while running:
+    while True:
         equation = input("Please enter your equation (ex. 2+2*(3-1)): ")
         try:
             result = eval(equation)
@@ -70,7 +63,6 @@ def equation():
         exit_input = input("Exit or go again? (Exit/Go Again): ")
         if exit_input.lower() == "exit":
             print(f"Goodbye, {first}!")
-            running = False
             break
 
 start = input("Are you ready to start? (Yes/No): ")
