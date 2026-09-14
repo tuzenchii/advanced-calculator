@@ -1,12 +1,14 @@
 print("Calculator 1.0 (Basic)")
 
+import math
+import operator
+
 def get_number(prompt):
     while True:
         try:
             return float(input(prompt))
         except ValueError:
             print("Error: Invalid input.")
-            continue
 def calculate(first_number, second_number, operation):
     if operation == "+":
         return first_number + second_number
@@ -26,22 +28,30 @@ def calculate(first_number, second_number, operation):
         else:
             print("Error: Not allowed.")
             return None
-    elif operation == "pow":
+    elif operation in ["pow", "**", "^"]:
         return first_number ** second_number
+    elif operation == "sqrt":
+        if first_number >= 0:
+            return math.sqrt(first_number)
+        else:
+            print("Error: Invalid input for square root.")
+            return None
+    elif operation == "abs":
+        return abs(first_number)
 def calculator1(): 
     while True:
 
         first_number = get_number("Enter the first number: ")
         while True:
-            try:
-                operation = input("Enter an operation (+, -, *, /, %, pow): ")
-                if operation not in ["+", "-", "*", "/", "%", "pow"]:
-                    raise ValueError("Invalid operation.")
+            operation = input("Enter an operation (+, -, *, /, %, pow, **, ^, sqrt, abs): ")
+            if operation in ["+", "-", "*", "/", "%", "pow", "**", "^", "sqrt", "abs"]:
                 break
-            except ValueError:
-                print("Error: Invalid operation.")
-                continue
-        second_number = get_number("Enter the second number: ")
+            print("Error: Invalid operation.")
+
+        if operation not in ["sqrt", "abs"]:
+            second_number = get_number("Enter the second number: ")
+        else:
+            second_number = None
 
         result = calculate(first_number, second_number, operation)
 
