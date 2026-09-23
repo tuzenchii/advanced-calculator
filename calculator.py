@@ -55,7 +55,7 @@ def calculator1():
 
         result = calculate(first_number, second_number, operation)
 
-        if result is not None: #continues to print the result only if the operation was valid (not division by zero or invalid operation).
+        if result is not None:
             print(f"{result:,g}")
 
         exit_input = input("Exit or go again? (Exit/Go Again): ")
@@ -82,8 +82,6 @@ if start.lower() == "yes":
     first = parts[0] #assigns the first element of the list to the variable first.
     if first.lower() == "tre'von":
         print("Oh it's the creator! Let's work.")
-    elif first.lower() == "kirsten":
-        print("Oh lala. The wife! Ready to begin? I doubt I know anything you don't.")
     else:
         print(f"Hello, {first}! Let's do some calculations.")
     method = input("What would you like to do? (Calculator/Equation): ")
